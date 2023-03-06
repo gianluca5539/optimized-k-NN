@@ -1,4 +1,7 @@
 import numpy as np
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 
 def knn(test_image: np.ndarray, zipped_images_labels, k: int) -> int:
@@ -15,6 +18,7 @@ def knn(test_image: np.ndarray, zipped_images_labels, k: int) -> int:
 
 
 def test_kNN(train_size: int, test_size: int, k: int) -> float:
+    logging.info("Loading arrays...")
     images_train = np.load("datasets/images_train.npy")[:train_size]
     labels_train = np.load("datasets/labels_train.npy")[:train_size]
     images_test = np.load("datasets/images_test.npy")[:test_size]
@@ -23,6 +27,8 @@ def test_kNN(train_size: int, test_size: int, k: int) -> float:
     zipped_images_labels = list(zip(images_train, labels_train))
 
     correct = 0
+
+    logging.info("Running Tests...")
     for test_image, label in zip(images_test, labels_test):
         prediction = knn(test_image, zipped_images_labels, k)
         if prediction == label:
@@ -31,5 +37,6 @@ def test_kNN(train_size: int, test_size: int, k: int) -> float:
 
 
 if __name__ == "__main__":
+    logging.info("Testing the KNN algorithm...")
     accuracy = test_kNN(train_size=60000, test_size=50, k=3)
-    print("The accuracy is: ", accuracy)
+    logging.info(f"The accuracy is: {accuracy:.2f}")

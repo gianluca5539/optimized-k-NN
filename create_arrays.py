@@ -1,4 +1,7 @@
 import numpy as np
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 
 def create_images_array(path: str, test):
@@ -32,7 +35,13 @@ def create_labels_array(path: str, test):
 
 
 if __name__ == "__main__":
+    logging.info("Creating arrays...")
+    logging.info("creating train images array...")
     create_images_array("datasets/train-images.idx3-ubyte", test=False)
+    logging.info("creating train labels array...")
     create_labels_array("datasets/train-labels.idx1-ubyte", test=False)
+    logging.info("creating test images array...")
     create_images_array("datasets/t10k-images.idx3-ubyte", test=True)
+    logging.info("creating test labels array...")
     create_labels_array("datasets/t10k-labels.idx1-ubyte", test=True)
+    logging.info("Done!")
