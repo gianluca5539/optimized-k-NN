@@ -7,7 +7,7 @@ def create_images_array(path,test):
         num_images = int.from_bytes(f.read(4), 'big')
         num_rows = int.from_bytes(f.read(4), 'big')
         num_cols = int.from_bytes(f.read(4), 'big')
-        array = np.array([[[int.from_bytes(f.read(1), 'big') for _ in range(num_cols)] for _ in range(num_rows)] for _ in range(num_images)],dtype=np.uint8)
+        array = np.array([[int.from_bytes(f.read(1), 'big') for _ in range(num_cols) for _ in range(num_rows)] for _ in range(num_images)],dtype=np.uint8)
         np.save(f'datasets/images_{"test" if test else "train"}.npy',array)
 
 def create_labels_array(path,test):
