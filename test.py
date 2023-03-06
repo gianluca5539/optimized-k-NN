@@ -2,11 +2,12 @@ import numpy as np
 
 @profile
 def knn(test_image, zipped_images_labels, k):
-    distances_list = [(np.linalg.norm(test_image - train_image), label) 
-                      for train_image, label in zipped_images_labels]
-    distances_list.sort(key=lambda x: x[0])
-    k_nearest_neighbors = [label for _, label in distances_list[:k]]
-    return max(k_nearest_neighbors, key=k_nearest_neighbors.count)
+    distances_list = np.array([(np.linalg.norm(test_image - train_image), label) 
+                      for train_image, label in zipped_images_labels])
+    sorted_indexes = distances_list[:, 0].argsort()
+    distances_list_sorted = distances_list[sorted_indexes]
+    first_k_labels = distances_list_sorted[:k, 1].astype(int)
+    return np.bincount(first_k_labels).argmax()
 
 def test_kNN(train_size,test_size,k):
     images_train = np.load('datasets/images_train.npy')[:train_size]
@@ -25,5 +26,5 @@ def test_kNN(train_size,test_size,k):
 
 
 if __name__ == "__main__":
-    accuracy = test_kNN(train_size=60000,test_size=100,k=3)
+    accuracy = test_kNN(train_size=60000,test_size=1,k=2)
     print(accuracy)
