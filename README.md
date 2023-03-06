@@ -1,4 +1,4 @@
-# optimized_kNN
+# optimized k-NN
 
 In this repo, I'm making the fastest implementation of the k-Nearest Neighbors algorithm I can manage to code.
 
