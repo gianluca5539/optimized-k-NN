@@ -19,6 +19,6 @@ def create_labels_array(path,test):
     
 if __name__ == "__main__":
     create_images_array('datasets/train-images.idx3-ubyte', test=False)
-    create_images_array('datasets/train-labels.idx1-ubyte', test=False)
-    create_labels_array('datasets/t10k-images.idx3-ubyte', test=True)
+    create_labels_array('datasets/train-labels.idx1-ubyte', test=False)
+    create_images_array('datasets/t10k-images.idx3-ubyte', test=True)
     create_labels_array('datasets/t10k-labels.idx1-ubyte', test=True)
