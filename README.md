@@ -15,8 +15,7 @@ The algorithm computes the Euclidean distance between the point given by the tes
 NumPy has been used to make things faster since it's coded in C.
 
 # How to use it
-To test this repo, you can easily clone it and run test.py directly.
+To test this repo, you can easily clone it and run test.py. Be sure to build the .npy files first by running create_arrays.py.
 
 # NumPy files
-I decided to include the NumPy files needed by the algorithm directly in the repo, even though they're pretty heavy (the one for training images is ~47MB!).
-I also included the create_arrays file that can be run to generate the necessary files starting from the MNIST datasets.
+Four .npy files need to be generated in order to run the algorighm. This process should not take very long thanks to @dario-loi's optimization using buffers.
