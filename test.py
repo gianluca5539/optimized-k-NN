@@ -1,5 +1,6 @@
 # Description: Test the KNN algorithm.
 
+import time
 import numpy as np
 import logging
 import cv2
@@ -38,6 +39,7 @@ def knn(
     distances_list_sorted = distances_list[sorted_indexes]
     first_k_labels = distances_list_sorted[:k, 1].astype(np.int64)
     return np.bincount(first_k_labels).argmax()
+
 
 
 def test_kNN(
@@ -93,5 +95,8 @@ def test_kNN(
 
 if __name__ == "__main__":
     logging.info("Testing the KNN algorithm...")
+    start = time.time()
     accuracy = test_kNN(train_size=60000, test_size=50, k=3)
+    end = time.time()
+    logging.info(f"Time: {end - start:.2f} seconds")
     logging.info(f"The accuracy is: {accuracy:.2f}")

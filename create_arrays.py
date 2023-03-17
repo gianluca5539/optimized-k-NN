@@ -99,7 +99,7 @@ def create_labels_array(path: str, test: bool):
 if __name__ == "__main__":
     logging.info("Creating arrays...")
     logging.info("creating train and test images array...")
-    create_images_arrays(("datasets/train-images.idx3-ubyte","datasets/t10k-images.idx3-ubyte"), hyperparam=150)
+    create_images_arrays(("datasets/train-images.idx3-ubyte","datasets/t10k-images.idx3-ubyte"), hyperparam=222)
     logging.info("creating train labels array...")
     create_labels_array("datasets/train-labels.idx1-ubyte", test=False)
     logging.info("creating test labels array...")
