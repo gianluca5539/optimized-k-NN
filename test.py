@@ -1,5 +1,6 @@
 # Description: Test the KNN algorithm.
 
+import time
 import numpy as np
 import logging
 import cv2
@@ -93,5 +94,8 @@ def test_kNN(
 
 if __name__ == "__main__":
     logging.info("Testing the KNN algorithm...")
+    start = time.time()
     accuracy = test_kNN(train_size=60000, test_size=50, k=3)
+    end = time.time()
+    logging.info(f"Time elapsed: {end - start:.2f} seconds")
     logging.info(f"The accuracy is: {accuracy:.2f}")
